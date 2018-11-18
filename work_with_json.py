@@ -15,7 +15,11 @@ def openCollection(path):
 
     # list of tests
     for item in postman_collection_items:
-        print(item["name"])
+        if item["name"] == "Auth: Digest":
+            for item2 in item["item"]:
+                if item2["name"] == "DigestAuth Request":
+                    print(item2["name"])
+                    print(item2["event"][0]["script"]["exec"])
 
 
 def openEnvironment(path):
@@ -40,5 +44,5 @@ def openEnvironment(path):
                ensure_ascii = False)
 
 
-#openCollection('data/postman_collections/box.json')
-openEnvironment('data/Test.postman_environment.json')
+openCollection('data/postman_collections/echo.json')
+#openEnvironment('data/Test.postman_environment.json')
